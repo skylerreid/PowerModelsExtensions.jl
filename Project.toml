@@ -10,7 +10,7 @@ MathOptInterface = "b8f27783-ece8-5eb3-8dc8-9495eed66fee"
 PowerModels = "c36e90e8-916a-50a6-bd94-075b64ef4655"
 
 [compat]
-Ipopt = "1.10.2"
-JuMP = "1.25.0"
-MathOptInterface = "1.39.0"
-PowerModels = "0.21.3"
+Ipopt = "1"
+JuMP = "1"
+MathOptInterface = "1"
+PowerModels = "0"

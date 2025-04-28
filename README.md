@@ -5,5 +5,5 @@ Welcome to PowerModelsExtensions!
 To install:
 
 using Pkg
-Pkg.add(url="https://github.com/skylerreid/PowerModelsExtensions.jl")
 
+Pkg.add(url="https://github.com/skylerreid/PowerModelsExtensions.jl")

@@ -11,7 +11,7 @@ To install:
 ```julia
 using Pkg
 
-Pkg.add(url="[https://github.com/skylerreid/PowerModelsExtensions.jl](https://github.com/skylerreid/PowerModelsExtensions.jl)")
+Pkg.add(url="[https://github.com/skylerreid/PowerModelsExtensions.jl](https://github.com/skylerreid/PowerModelsExtensions.jl)")'''
 
 #Available functions: 
 

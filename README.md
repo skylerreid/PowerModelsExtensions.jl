@@ -14,7 +14,7 @@ using Pkg
 Pkg.add(url="[https://github.com/skylerreid/PowerModelsExtensions.jl](https://github.com/skylerreid/PowerModelsExtensions.jl)")
 ```
 
-##Available functions: 
+## Available functions: 
 
 loadtogenratio: takes in a PowerModels case. Sums the real and reactive power at both the loads and the generators. Returns a 2x1 Float64 with the ratios of these quantities. 
 

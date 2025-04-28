@@ -12,6 +12,7 @@ To install:
 using Pkg
 
 Pkg.add(url="[https://github.com/skylerreid/PowerModelsExtensions.jl](https://github.com/skylerreid/PowerModelsExtensions.jl)")
+'''
 
 ##Available functions: 
 

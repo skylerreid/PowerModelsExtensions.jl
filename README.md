@@ -42,3 +42,17 @@ example:
 ```julia
 modify_loads(case, latmin, latmax, longmin, longmax, 0.9) #scales both p and q at each bus in the region by 0.9
 ```
+
+GTmap: takes a PowerModels case and extracts the generator locations from the bus data. The branch data can be used to infer the transmission line lengths and endpoints. Requires a specific shapefile that can be found in my geodata plots repo. 
+
+example:
+```julia
+using PowerModels
+shp_path = "C:\\Users\\skyle\\OneDrive - Montana State University\\EELE 491\\data\\ne_110m_admin_1_states_provinces.shp"
+case_path = "C:\\Users\\skyle\\OneDrive - Montana State University\\EELE 491\\150_sync\\uiuc150bus_10.m"
+case = parse_file(case_path)
+
+p1 = GTmap("TN", case, shp_path, 1200, 600, "TN Test Grid G&T")
+
+display(p1)
+```

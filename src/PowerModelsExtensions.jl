@@ -9,5 +9,7 @@ include("find_pg_limit.jl")
 include("modify_loads.jl")
 include("modify_gens.jl")
 include("loadtogenratio.jl")
+include("state_plot.jl")
+include("GTmap.jl")
 
 end

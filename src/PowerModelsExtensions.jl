@@ -20,7 +20,7 @@ export correct_power_factor,
        find_pg_limit,
        modify_loads,
        modify_gens,
-       load_to_gen_ratio,  # assuming that's the function name
+       load_to_gen_ratio, 
        longline_sending_voltage,
        match_admittance
 

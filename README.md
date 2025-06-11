@@ -56,3 +56,15 @@ p1 = GTmap("TN", case, shp_path, 1200, 600, "TN Test Grid G&T")
 
 display(p1)
 ```
+
+correct_power_factor: performs basic power factor correction. Takes the source voltage, real power, current power factor, lead or lag (as a string), and the desired power factor. Frequency defaults to 60Hz. Returns the element needed for power factor correction. 
+example with a 10kV source supplying 50kW at 0.6 lagging, corrected to 0.9: 
+```julia
+capacitor_value = correct_power_factor(1e4, 5e4, 0.6, "lag", 0.9)
+```
+
+match_admittance: performs basic single-stub admittance matching using the Smith chart method. Returns a tuple containing the location and component pairs that match admittances. Distances are in meters. In the example case, the function returns (d1 = -0.8800158406356422, component1 = ("C", 1.4379774886996293e-11), d2 = 0.18939097687649034, component2 = ("L", 1.7615224236570468e-7))
+example for a 25-j50 ohm line with 50 ohms characteristic impedance, operating at 100MHz: 
+```julia
+matched = = match_admittance(25-im*50, 50.0, 100e6)
+```

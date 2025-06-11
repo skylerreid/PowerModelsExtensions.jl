@@ -11,5 +11,8 @@ include("modify_gens.jl")
 include("loadtogenratio.jl")
 include("state_plot.jl")
 include("GTmap.jl")
+include("correct_power_factor.jl")
+include("longline_sending_voltage.jl")
+include("match_admittance.jl")
 
 end

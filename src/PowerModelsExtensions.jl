@@ -23,6 +23,5 @@ export correct_power_factor,
        load_to_gen_ratio,  # assuming that's the function name
        longline_sending_voltage,
        match_admittance
-end
 
 end

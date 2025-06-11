@@ -11,7 +11,7 @@ To install:
 ```julia
 using Pkg
 
-Pkg.add(url="[https://github.com/skylerreid/PowerModelsExtensions.jl](https://github.com/skylerreid/PowerModelsExtensions.jl)")
+Pkg.add(url="https://github.com/skylerreid/PowerModelsExtensions.jl")
 ```
 
 ## Available functions: 
@@ -43,7 +43,7 @@ example:
 modify_loads(case, latmin, latmax, longmin, longmax, 0.9) #scales both p and q at each bus in the region by 0.9
 ```
 
-GTmap: takes a PowerModels case and extracts the generator locations from the bus data. The branch data can be used to infer the transmission line lengths and endpoints. Requires a specific shapefile that can be found in my geodata plots repo. 
+GTmap: takes a PowerModels case and extracts the generator locations from the bus data. The branch data can be used to infer the transmission line lengths and endpoints. Requires a specific shapefile that can be found in my geodata plots repo. note: this function is currently disabled in the main PME package. It can still be accessed and used, but will need to be copied to your local machine.
 
 example:
 ```julia

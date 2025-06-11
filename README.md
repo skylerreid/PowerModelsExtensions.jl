@@ -67,5 +67,5 @@ capacitor_value = correct_power_factor(1e4, 5e4, 0.6, "lag", 0.9)
 
 example for a 25-j50 ohm line with 50 ohms characteristic impedance, operating at 100MHz: 
 ```julia
-matched = = match_admittance(25-im*50, 50.0, 100e6)
+matched = match_admittance(25-im*50, 50.0, 100e6)
 ```

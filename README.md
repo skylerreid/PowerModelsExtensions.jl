@@ -58,6 +58,7 @@ display(p1)
 ```
 
 **correct_power_factor**: performs basic power factor correction. Takes the source voltage, real power, current power factor, lead or lag (as a string), and the desired power factor. Frequency defaults to 60Hz. Returns the element needed for power factor correction. 
+
 example with a 10kV source supplying 50kW at 0.6 lagging, corrected to 0.9: 
 ```julia
 capacitor_value = correct_power_factor(1e4, 5e4, 0.6, "lag", 0.9)

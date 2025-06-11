@@ -15,4 +15,14 @@ include("correct_power_factor.jl")
 include("longline_sending_voltage.jl")
 include("match_admittance.jl")
 
+export correct_power_factor,
+       find_qg_limit,
+       find_pg_limit,
+       modify_loads,
+       modify_gens,
+       load_to_gen_ratio,  # assuming that's the function name
+       longline_sending_voltage,
+       match_admittance
+end
+
 end

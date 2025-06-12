@@ -47,7 +47,7 @@ modify_loads(case, latmin, latmax, longmin, longmax, 0.9) #scales both p and q a
 
 example:
 ```julia
-using PowerModels
+using PowerModels, PowerModelsExtensions
 shp_path = "C:\\Users\\skyle\\OneDrive - Montana State University\\EELE 491\\data\\ne_110m_admin_1_states_provinces.shp"
 case_path = "C:\\Users\\skyle\\OneDrive - Montana State University\\EELE 491\\150_sync\\uiuc150bus_10.m"
 case = parse_file(case_path)
@@ -69,4 +69,11 @@ capacitor_value = correct_power_factor(1e4, 5e4, 0.6, "lag", 0.9)
 example for a 25-j50 ohm line with 50 ohms characteristic impedance, operating at 100MHz: 
 ```julia
 matched = match_admittance(25-im*50, 50.0, 100e6)
+```
+
+**projectilestats**: returns a vector containing the range, time of flight, and maximum height for a projectile launched upwards at a given angle, speed, and starting height. Does not include air resistance. 
+
+example with a projectile launched at 100m/s at 30 degrees, with the launch height being 10m above the ending height:
+```julia
+stats = projectilestats(100, 30, 10)
 ```

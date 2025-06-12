@@ -14,6 +14,7 @@ include("loadtogenratio.jl")
 include("correct_power_factor.jl")
 include("longline_sending_voltage.jl")
 include("match_admittance.jl")
+include("projectilestats.jl")
 
 export correct_power_factor,
        find_qg_limit,
@@ -22,6 +23,7 @@ export correct_power_factor,
        modify_gens,
        load_to_gen_ratio, 
        longline_sending_voltage,
-       match_admittance
+       match_admittance,
+       projectilestats
 
 end

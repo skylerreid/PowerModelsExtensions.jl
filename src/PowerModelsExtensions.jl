@@ -15,6 +15,9 @@ include("correct_power_factor.jl")
 include("longline_sending_voltage.jl")
 include("match_admittance.jl")
 include("projectilestats.jl")
+include("ipopt_macro.jl")
+include("juniper_macro.jl")
+include("get_files_by_extension.jl")
 
 export correct_power_factor,
        find_qg_limit,
@@ -24,6 +27,8 @@ export correct_power_factor,
        load_to_gen_ratio, 
        longline_sending_voltage,
        match_admittance,
-       projectilestats
-
+       projectilestats,
+       @ipopt,
+       @juniper_minlp,
+       get_files_by_extension
 end

@@ -18,6 +18,7 @@ include("projectilestats.jl")
 include("ipopt_macro.jl")
 include("juniper_macro.jl")
 include("get_files_by_extension.jl")
+include("curves_wrapper.jl")
 
 export correct_power_factor,
        find_qg_limit,
@@ -30,5 +31,7 @@ export correct_power_factor,
        projectilestats,
        @ipopt,
        @juniper_minlp,
-       get_files_by_extension
+       get_files_by_extension,
+       z_index,
+       hilbert_index
 end

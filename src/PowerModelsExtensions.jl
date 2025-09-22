@@ -30,9 +30,10 @@ export correct_power_factor,
        match_admittance,
        projectilestats,
        @ipopt,
-       @juniper_minlp,
+       @juniper,
        get_files_by_extension,
        z_index,
        hilbert_index
 end
+
 

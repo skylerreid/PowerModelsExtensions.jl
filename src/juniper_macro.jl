@@ -1,23 +1,28 @@
 """
-    @juniper_minlp
+    @juniper [tolerance]
 
-Creates a Juniper MINLP solver with IPOPT as the NLP solver and HiGHS as the MIP solver.
+Creates a Juniper solver with predefined settings.
+Optional parameter:
+- `tolerance`: Convergence tolerance (default: 1e-4)
+
+Examples:
+    @juniper         # Uses default tolerance of 1e-3
+    @juniper 1e-2    # Sets tolerance to 1e-2
 """
-macro juniper_minlp()
+macro juniper(tolerance=1e-3)
     return esc(quote
-        ipopt_solver = JuMP.optimizer_with_attributes(
-            Ipopt.Optimizer,
-            "tol" => 1e-4,
-            "print_level" => 0,
-            "sb" => "yes"
-        )
-        
-        highs_solver = JuMP.optimizer_with_attributes(HiGHS.Optimizer)
-        
         juniper_solver = JuMP.optimizer_with_attributes(
             Juniper.Optimizer,
-            "nl_solver" => ipopt_solver,
-            "mip_solver" => highs_solver,
+            "nl_solver" => JuMP.optimizer_with_attributes(
+                Ipopt.Optimizer,
+                "tol" => $tolerance,
+                "print_level" => 0,
+                "sb" => "yes"
+            ),
+            "mip_solver" => JuMP.optimizer_with_attributes(
+                HiGHS.Optimizer,
+                "output_flag" => false
+            ),
             "log_levels" => []
         )
     end)

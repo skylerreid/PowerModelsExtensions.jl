@@ -9,9 +9,7 @@ Welcome to PowerModelsExtensions!
 To install:
 
 ```julia
-using Pkg
-
-Pkg.add(url="https://github.com/skylerreid/PowerModelsExtensions.jl")
+pkg> add https://github.com/skylerreid/PowerModelsExtensions.jl
 ```
 
 ## Available functions: 

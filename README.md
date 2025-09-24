@@ -2,7 +2,7 @@
 
 Additional functions for PowerModels.jl
 
-Welcome to PowerModelsExtensions!
+Welcome to PowerModelsExtensions! 
 
 ## Installation
 
@@ -76,4 +76,40 @@ matched = match_admittance(25-im*50, 50.0, 100e6)
 example with a projectile launched at 100m/s at 30 degrees, with the launch height being 10m above the ending height:
 ```julia
 stats = projectilestats(100, 30, 10)
+```
+
+**@ipopt**
+: configures a basic Ipopt solver with minimal print levels and a default tolerance of 1e-3. The solver object is returned as `ipopt_solver`. 
+
+```julia
+using PowerModels, PowerModelsExtensions, JuMP, Ipopt
+
+#load in case here
+
+@ipopt 1e-2 #default is 1e-3
+
+result = solve_ac_opf(case, ipopt_solver)
+```
+
+**@juniper** : similar to the `@ipopt` macro, `@juniper` configures a Juniper MINLP solver using Ipopt and HiGHS. The solver object is returned as `juniper_solver` and the Ipopt tolerance value is adjustable when defined. 
+
+```julia
+using GasModels, PowerModelsExtensions, Juniper, HiGHS, Ipopt
+
+#load in case here
+
+@juniper #again, tolerance is adjustable but defaults to 1e-3
+
+result = solve_ogf(case, DWPGasModel, juniper_solver) #DWP formulation uses discrete variables and requires a MINLP solver
+```
+
+**get_files_by_extension** : returns a list of filepaths for all files with the given extension from the target location. 
+
+```julia
+#assuming a folder called group_of_files contains both .m and .csv files
+
+m_files = get_files_by_extension("group_of_files", ".m")
+csv_files = get_files_by_extension("group_of_files", ".csv")
+
+# for (m_file, csv_file) in zip(m_files, csv_files) ...........
 ```

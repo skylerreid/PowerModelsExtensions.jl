@@ -13,7 +13,7 @@ Examples:
 """
 macro ipopt(tolerance=1e-3)
     return esc(quote
-        ipopt_solver = JuMP.optimizer_with_attributes(
+        ipopt_solver = optimizer_with_attributes(
             Ipopt.Optimizer,
             "tol" => $tolerance,
             "print_level" => 0,

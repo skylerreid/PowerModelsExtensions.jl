@@ -19,6 +19,7 @@ include("macros/ipopt_macro.jl")
 include("macros/juniper_macro.jl")
 include("utilities/get_files_by_extension.jl")
 include("compiled/curves_wrapper.jl")
+include("macros/json_macro.jl")
 
 export correct_power_factor,
        find_qg_limit,
@@ -31,6 +32,7 @@ export correct_power_factor,
        projectilestats,
        @ipopt,
        @juniper,
+       @to_json,
        get_files_by_extension,
        z_index,
        hilbert_index

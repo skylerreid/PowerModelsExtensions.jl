@@ -10,9 +10,9 @@ function find_qg_limit(case::Dict, gen_indices::Vector{Int}, tolerance::Float64)
     setting = Dict{String,Any}("output" => Dict{String,Any}("branch_flows" => true))
     local_setting = Dict{String,Any}("bound_voltage" => true)
     merge!(local_setting, setting)
-    solver = JuMP.optimizer_with_attributes(Ipopt.Optimizer, "tol" => 1e-4, "print_level" => 0, "sb" => "yes")
-    # Define the power flow function
-    function power_flow_tf(pm_case::Dict) #determine if power flow solves or not
+    solver = JuMP.optimizer_with_attributes(Ipopt.Optimizer, "tol" => 1e-3, "print_level" => 0, "sb" => "yes")
+    # Define the power flow function: does the case solve or not
+    function power_flow_tf(pm_case::Dict) 
         result = solve_ac_opf(pm_case, solver)
         if haskey(result, "termination_status") && result["termination_status"] == MathOptInterface.LOCALLY_SOLVED
             return true
@@ -40,6 +40,7 @@ function find_qg_limit(case::Dict, gen_indices::Vector{Int}, tolerance::Float64)
         temp_case = deepcopy(case) # Create copy of the case
         modify_gens(temp_case, gen_indices, 1.0, qg_mult_mid)
         iters = iters+1
+
         if power_flow_tf(temp_case)
             # If power flow is successful, lower the limit
             qg_mult_high = qg_mult_mid

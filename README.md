@@ -105,6 +105,7 @@ result = solve_ogf(case, DWPGasModel, juniper_solver) #DWP formulation uses disc
 
 ```julia
 #assuming a folder called group_of_files contains both .m and .csv files
+#this is super useful when you have to iterate over a bunch of files from a directory
 
 m_files = get_files_by_extension("group_of_files", ".m")
 csv_files = get_files_by_extension("group_of_files", ".csv")

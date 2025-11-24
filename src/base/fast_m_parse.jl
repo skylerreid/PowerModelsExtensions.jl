@@ -1,8 +1,3 @@
-
-#WARNING: INCLUDING THIS CODE WILL CAUSE PRECOMP TO FAIL
-#DO NOT ADD TO GASMODELS.JL UNTIL IMPORTS HAVE BEEN RESOLVED
-
-
 using DataFrames, .Threads, GasModels
 apply_corrections = true
 #=
@@ -133,7 +128,7 @@ end
 function extract_metadata(content)
     # Look for the metadata section
     metadata_start = "function mgc ="
-    metadata_end = "mgc.units ="  # We'll capture up to this line and handle the last lines separately
+    metadata_end = "mgc.units ="  # handle the last lines separately
     
     # Extract the metadata text block
     metadata_text = extract_text_between(content, metadata_start, metadata_end)
@@ -199,8 +194,6 @@ function extract_metadata(content)
     
     return metadata
 end
-
-filepath = "KernRiverGT_YELLOW_v3.m"
 
 # next task: add asserts to make parser more robust wrt per unit
 function fast_m_parse(filepath::String, apply_corrections=true)

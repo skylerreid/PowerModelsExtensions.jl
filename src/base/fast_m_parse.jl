@@ -199,6 +199,7 @@ end
 function fast_m_parse(filepath::String, apply_corrections=true)
     content = read(filepath, String)
 
+    #note: case6 uses "pipeline data" instead of "pipe data" so this breaks. still works for naerm models
     starts = ["%% junction", "%% pipe", "%% compressor", "%% transfer", "%% receipt", "%% delivery"]
     data_starts = ["%% junction data", "%% pipe data", "%% compressor data", "%% transfer data", "%% receipt data", "%% delivery data"]
     end_marker = "];"

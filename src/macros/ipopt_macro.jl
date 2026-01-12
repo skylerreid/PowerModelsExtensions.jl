@@ -7,17 +7,39 @@ Creates an IPOPT solver with predefined settings.
 Optional parameter:
 - `tolerance`: Convergence tolerance (default: 1e-4)
 
-Examples:
-    @ipopt         # Uses default tolerance of 1e-3
-    @ipopt 1e-2    # Sets tolerance to 1e-2
+@ipopt()  # defaults to MA57
+@ipopt(1e-4, "ma27")  # smaller problems
+@ipopt(1e-3, "mumps")  # fallback
 """
-macro ipopt(tolerance=1e-3)
+# macro ipopt(tolerance=1e-3)
+#     return esc(quote
+#         ipopt_solver = optimizer_with_attributes(
+#             Ipopt.Optimizer,
+#             "tol" => $tolerance,
+#             "print_level" => 0,
+#             "sb" => "yes"
+#         )
+#     end)
+# end
+
+# potential include ma27 option
+macro ipopt(tolerance=1e-3, linear_solver="ma57")
     return esc(quote
-        ipopt_solver = optimizer_with_attributes(
-            Ipopt.Optimizer,
+        solver_options = [
             "tol" => $tolerance,
             "print_level" => 0,
-            "sb" => "yes"
+            "sb" => "yes",
+            "linear_solver" => $linear_solver
+        ]
+        
+        # Add HSL path if using HSL solvers
+        if $linear_solver in ["ma27", "ma57", "ma86", "ma97"]
+            push!(solver_options, "hsllib" => HSL_jll.libhsl_path)
+        end
+        
+        ipopt_solver = optimizer_with_attributes(
+            Ipopt.Optimizer,
+            solver_options...
         )
     end)
 end

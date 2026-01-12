@@ -2,7 +2,7 @@ module PowerModelsExtensions
 
 __precompile__()
 
-using PowerModels, MathOptInterface, JuMP, Ipopt
+using PowerModels, MathOptInterface, JuMP, Ipopt, HSL_jll
 
 include("base/find_qg_limit.jl")
 include("base/find_pg_limit.jl")

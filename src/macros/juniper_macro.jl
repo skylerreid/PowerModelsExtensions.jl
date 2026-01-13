@@ -19,7 +19,7 @@ macro juniper(tolerance=1e-3)
                 "print_level" => 0,
                 "sb" => "yes",
                 "hsllib" => HSL_jll.libhsl_path,
-                "linear_solver" => "ma27"
+                "linear_solver" => "ma57"
             ),
             "mip_solver" => JuMP.optimizer_with_attributes(
                 HiGHS.Optimizer,

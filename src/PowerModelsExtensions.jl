@@ -2,7 +2,7 @@ module PowerModelsExtensions
 
 __precompile__()
 
-using PowerModels, MathOptInterface, JuMP, Ipopt, HSL_jll
+using PowerModels, MathOptInterface, JuMP, Ipopt, HSL_jll, HTTP, JSON
 
 include("base/find_qg_limit.jl")
 include("base/find_pg_limit.jl")
@@ -18,6 +18,7 @@ include("base/projectilestats.jl")
 include("macros/ipopt_macro.jl")
 include("macros/juniper_macro.jl")
 include("utilities/get_files_by_extension.jl")
+include("utilities/get_no_reason.jl")
 include("compiled/curves_wrapper.jl")
 include("macros/json_macro.jl")
 
@@ -34,6 +35,7 @@ export correct_power_factor,
        @juniper,
        @to_json,
        get_files_by_extension,
+       get_no,
        z_index,
        hilbert_index
 end

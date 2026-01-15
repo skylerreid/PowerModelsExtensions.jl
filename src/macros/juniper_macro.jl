@@ -16,7 +16,7 @@ macro juniper(tolerance=1e-3)
             "nl_solver" => JuMP.optimizer_with_attributes(
                 Ipopt.Optimizer,
                 "tol" => $tolerance,
-                "print_level" => 0,
+                "print_level" => 5,
                 "sb" => "yes",
                 "hsllib" => HSL_jll.libhsl_path,
                 "linear_solver" => "ma57"

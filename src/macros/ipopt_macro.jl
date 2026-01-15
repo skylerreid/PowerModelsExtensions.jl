@@ -27,7 +27,7 @@ macro ipopt(tolerance=1e-3, linear_solver="ma57")
     return esc(quote
         solver_options = [
             "tol" => $tolerance,
-            "print_level" => 0,
+            "print_level" => 5,
             "sb" => "yes",
             "linear_solver" => $linear_solver
         ]

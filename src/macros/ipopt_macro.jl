@@ -22,24 +22,21 @@ Optional parameter:
 #     end)
 # end
 
-# potential include ma27 option
-macro ipopt(tolerance=1e-3, linear_solver="ma57")
-    return esc(quote
-        solver_options = [
-            "tol" => $tolerance,
-            "print_level" => 5,
-            "sb" => "yes",
-            "linear_solver" => $linear_solver
-        ]
-        
-        # Add HSL path if using HSL solvers
-        if $linear_solver in ["ma27", "ma57", "ma86", "ma97"]
-            push!(solver_options, "hsllib" => HSL_jll.libhsl_path)
-        end
-        
-        ipopt_solver = optimizer_with_attributes(
-            Ipopt.Optimizer,
-            solver_options...
-        )
-    end)
+function build_ipopt_solver(; tolerance=1e-3, linear_solver="ma57")
+
+    solver_options = [
+        "tol" => tolerance,
+        "print_level" => 5,
+        "sb" => "yes",
+        "linear_solver" => linear_solver
+    ]
+
+    if linear_solver in ("ma27", "ma57", "ma86", "ma97")
+        push!(solver_options, "hsllib" => HSL_jll.libhsl_path)
+    end
+
+    return optimizer_with_attributes(
+        Ipopt.Optimizer,
+        solver_options...
+    )
 end

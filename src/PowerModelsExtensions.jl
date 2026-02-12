@@ -2,7 +2,10 @@ module PowerModelsExtensions
 
 __precompile__()
 
-using PowerModels, MathOptInterface, JuMP, Ipopt, HSL_jll, HTTP, JSON
+using PowerModels, MathOptInterface, JuMP, Ipopt, HTTP, JSON
+using HSL_jll
+
+const hslpath = HSL_jll.libhsl_path
 
 include("base/find_qg_limit.jl")
 include("base/find_pg_limit.jl")
@@ -18,6 +21,7 @@ include("base/projectilestats.jl")
 include("macros/ipopt_macro.jl")
 include("macros/juniper_macro.jl")
 include("utilities/get_files_by_extension.jl")
+include("utilities/generic.jl")
 include("utilities/get_no_reason.jl")
 include("compiled/curves_wrapper.jl")
 include("macros/json_macro.jl")
@@ -31,11 +35,12 @@ export correct_power_factor,
        longline_sending_voltage,
        match_admittance,
        projectilestats,
-       @ipopt,
-       @juniper,
-       @to_json,
+       build_ipopt_solver,
+       @juniper, #planning to eventually switch this from macro to function
+       to_json!,
        get_files_by_extension,
        get_no,
+       filetype,
        z_index,
        hilbert_index
 end

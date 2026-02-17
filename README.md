@@ -1,8 +1,8 @@
 # PowerModelsExtensions.jl
 
-Additional functions for PowerModels.jl
+Welcome to PowerModelsExtensions!
 
-Welcome to PowerModelsExtensions! 
+This started as an additional functions/extensions package for PowerModels.jl, but at this point it's pretty much just my personal package where I put all the utilities I find useful.
 
 ## Installation
 

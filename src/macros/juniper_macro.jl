@@ -30,38 +30,37 @@ macro juniper(tolerance=1e-3)
     end)
 end
 
-# TODO: add highs as a dependency, then I can use this
-# function build_juniper_solver(; 
-#     tolerance=1e-3,
-#     linear_solver="ma57"
-# )
+function build_juniper_solver(; 
+    tolerance=1e-3,
+    linear_solver="ma57"
+)
 
-#     ipopt_options = [
-#         "tol" => tolerance,
-#         "print_level" => 5,
-#         "sb" => "yes",
-#         "linear_solver" => linear_solver
-#     ]
+    ipopt_options = [
+        "tol" => tolerance,
+        "print_level" => 5,
+        "sb" => "yes",
+        "linear_solver" => linear_solver
+    ]
 
-#     if linear_solver in ("ma27", "ma57", "ma86", "ma97")
-#         push!(ipopt_options, "hsllib" => HSL_jll.libhsl_path)
-#     end
+    if linear_solver in ("ma27", "ma57", "ma86", "ma97")
+        push!(ipopt_options, "hsllib" => HSL_jll.libhsl_path)
+    end
 
-#     nl_solver = JuMP.optimizer_with_attributes(
-#         Ipopt.Optimizer,
-#         ipopt_options...
-#     )
+    nl_solver = JuMP.optimizer_with_attributes(
+        Ipopt.Optimizer,
+        ipopt_options...
+    )
 
-#     mip_solver = JuMP.optimizer_with_attributes(
-#         HiGHS.Optimizer,
-#         "output_flag" => false
-#     )
+    mip_solver = JuMP.optimizer_with_attributes(
+        HiGHS.Optimizer,
+        "output_flag" => false
+    )
 
-#     return JuMP.optimizer_with_attributes(
-#         Juniper.Optimizer,
-#         "nl_solver" => nl_solver,
-#         "mip_solver" => mip_solver,
-#         "log_levels" => []
-#     )
-# end
+    return JuMP.optimizer_with_attributes(
+        Juniper.Optimizer,
+        "nl_solver" => nl_solver,
+        "mip_solver" => mip_solver,
+        "log_levels" => []
+    )
+end
 

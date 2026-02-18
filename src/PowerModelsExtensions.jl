@@ -2,8 +2,8 @@ module PowerModelsExtensions
 
 __precompile__()
 
-using PowerModels, MathOptInterface, JuMP, Ipopt, HTTP, JSON
-using HSL_jll
+using PowerModels, MathOptInterface, JuMP, Ipopt, HTTP, JSON, HiGHS
+using HSL_jll, Juniper
 
 const hslpath = HSL_jll.libhsl_path
 
@@ -36,6 +36,7 @@ export correct_power_factor,
        match_admittance,
        projectilestats,
        build_ipopt_solver,
+       build_juniper_solver,
        @juniper, #planning to eventually switch this from macro to function
        to_json!,
        get_files_by_extension,

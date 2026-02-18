@@ -41,6 +41,7 @@ export correct_power_factor,
        get_files_by_extension,
        get_no,
        filetype,
+       force_recompile,
        z_index,
        hilbert_index
 end

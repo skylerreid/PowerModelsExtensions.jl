@@ -43,6 +43,7 @@ export correct_power_factor,
        get_no,
        filetype,
        force_recompile,
+       keys_to_symbols,
        z_index,
        hilbert_index
 end

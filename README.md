@@ -76,27 +76,23 @@ example with a projectile launched at 100m/s at 30 degrees, with the launch heig
 stats = projectilestats(100, 30, 10)
 ```
 
-**@ipopt**
-: configures a basic Ipopt solver with minimal print levels and a default tolerance of 1e-3. The solver object is returned as `ipopt_solver`. 
+**build_ipopt_solver**
+: Returns an Ipopt solver configured with print level 5, tolerance 1e-3, and uses the MA57 linear algebra package. The solver object is returned as `ipopt_solver`. 
 
 ```julia
-using PowerModels, PowerModelsExtensions, JuMP, Ipopt
+using PowerModels, PowerModelsExtensions
 
 #load in case here
 
-@ipopt 1e-2 #default is 1e-3
-
-result = solve_ac_opf(case, ipopt_solver)
+result = solve_ac_opf(case, build_ipopt_solver())
 ```
 
-**@juniper** : similar to the `@ipopt` macro, `@juniper` configures a Juniper MINLP solver using Ipopt and HiGHS. The solver object is returned as `juniper_solver` and the Ipopt tolerance value is adjustable when defined. 
+**build_juniper_solver** : similar to the `build_ipopt_solver` function, `build_juniper_solver` configures a Juniper MINLP solver using Ipopt and HiGHS. The solver object is returned as `juniper_solver` and the Ipopt tolerance value is adjustable when defined. 
 
 ```julia
-using GasModels, PowerModelsExtensions, Juniper, HiGHS, Ipopt
+using GasModels, PowerModelsExtensions #PME loads juniper, highs, and ipopt by default
 
 #load in case here
-
-@juniper #again, tolerance is adjustable but defaults to 1e-3
 
 result = solve_ogf(case, DWPGasModel, juniper_solver) #DWP formulation uses discrete variables and requires a MINLP solver
 ```
@@ -111,4 +107,36 @@ m_files = get_files_by_extension("group_of_files", ".m")
 csv_files = get_files_by_extension("group_of_files", ".csv")
 
 # for (m_file, csv_file) in zip(m_files, csv_files) ...........
+```
+
+**get_no**
+
+Returns a random reason to say no to something. Calls a web api called "no as a service"
+
+```julia
+julia> get_no()
+
+"I signed up for a course on saying no, and I'm just practicing my homework."
+```
+
+**keys_to_symbols**
+
+Recursively convert all of the keys in a dictionary from strings to symbols. Works pretty quickly and improves speed of a dictionary later. 
+
+```julia
+using GasModels, PowerModelsExtensions
+case = parse_file(path_to_file)
+newcase = keys_to_symbols(case)
+```
+
+**to_json!**
+
+Prints a dictionary to a json file at the specified filepath.
+
+```julia
+using GasModels, PowerModelsExtensions
+
+case = parse_file(filepath)
+res = solve_ogf(case, WPGasModel, build_ipopt_solver())
+to_json!("solution_file.json", res)
 ```

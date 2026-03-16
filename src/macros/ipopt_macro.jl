@@ -22,11 +22,11 @@ Optional parameter:
 #     end)
 # end
 
-function build_ipopt_solver(; tolerance=1e-3, linear_solver="ma57")
+function build_ipopt_solver(; tolerance=1e-3, linear_solver="ma57", print_level=3)
 
     solver_options = [
         "tol" => tolerance,
-        "print_level" => 5,
+        "print_level" => print_level,
         "sb" => "yes",
         "linear_solver" => linear_solver
     ]

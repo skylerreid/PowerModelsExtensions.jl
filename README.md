@@ -24,7 +24,7 @@ ratio = loadtogenratio(case1)
 
 example: 
 ```julia
-q_lim = find_qg_limit(case1, [1,2,3,4,5,6,7,8,9,10], 0.01) #find reactive power limit for gens 1-10 with 0.01 tolerance
+q_lim = find_qg_limit(case1, collect(1:10), 0.01) #find reactive power limit for gens 1-10 with 0.01 tolerance
 ```
 
 **modify_gens**: scales the pg and qg values at a list of specified generators. This function modifies the case in place, so a copy should be performed if the case is needed later. 

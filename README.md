@@ -77,7 +77,7 @@ stats = projectilestats(100, 30, 10)
 ```
 
 **build_ipopt_solver**
-: Returns an Ipopt solver configured with print level 5, tolerance 1e-3, and uses the MA57 linear algebra package. The solver object is returned as `ipopt_solver`. 
+: Returns an Ipopt solver configured with print level 3, tolerance 1e-3, and uses the MA57 linear algebra package. The solver object is returned as `ipopt_solver`. 
 
 ```julia
 using PowerModels, PowerModelsExtensions
@@ -97,14 +97,14 @@ using GasModels, PowerModelsExtensions #PME loads juniper, highs, and ipopt by d
 result = solve_ogf(case, DWPGasModel, juniper_solver) #DWP formulation uses discrete variables and requires a MINLP solver
 ```
 
-**get_files_by_extension** : returns a list of filepaths for all files with the given extension from the target location. 
+**get_files_by_extension** : returns a sorted list of filepaths for all files with the given extension from the target location. 
 
 ```julia
 #assuming a folder called group_of_files contains both .m and .csv files
 #this is super useful when you have to iterate over a bunch of files from a directory
 
-m_files = get_files_by_extension("group_of_files", ".m")
-csv_files = get_files_by_extension("group_of_files", ".csv")
+m_files = get_files_by_extension("group_of_files", "m")
+csv_files = get_files_by_extension("group_of_files", "csv")
 
 # for (m_file, csv_file) in zip(m_files, csv_files) ...........
 ```

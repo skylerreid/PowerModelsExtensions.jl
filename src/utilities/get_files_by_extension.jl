@@ -1,5 +1,6 @@
 function get_files_by_extension(directory_path::String, extension::String)
+    #extension should just be "m" or "csv", dropped requirement for ".m"/".csv"
     all_files_and_dirs = readdir(directory_path, join = true)
-    filtered_files = filter(x -> endswith(lowercase(x), lowercase(extension)), all_files_and_dirs)
+    filtered_files = filter(x -> endswith(lowercase(x), ("."*lowercase(extension))), all_files_and_dirs)
     return sort(filtered_files)
 end

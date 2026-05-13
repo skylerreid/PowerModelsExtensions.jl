@@ -17,7 +17,7 @@ PowerModels = "c36e90e8-916a-50a6-bd94-075b64ef4655"
 [compat]
 HiGHS = "1"
 Ipopt = "1"
-JSON = "~1.5"
+JSON = "0, ~1.5"
 JuMP = "1"
 Juniper = "0"
 MathOptInterface = "1"

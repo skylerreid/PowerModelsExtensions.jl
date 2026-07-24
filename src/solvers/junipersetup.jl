@@ -32,12 +32,13 @@ end
 
 function build_juniper_solver(; 
     tolerance=1e-3,
-    linear_solver="ma57"
+    linear_solver="ma57",
+    print_level=3
 )
 
     ipopt_options = [
         "tol" => tolerance,
-        "print_level" => 5,
+        "print_level" => print_level,
         "sb" => "yes",
         "linear_solver" => linear_solver
     ]
